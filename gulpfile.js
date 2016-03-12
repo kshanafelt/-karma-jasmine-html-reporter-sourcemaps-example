@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var Server = require('karma').Server;
 var webpack = require('webpack-stream');
 var named = require('vinyl-named')
 var del = require('del');
@@ -7,14 +8,31 @@ var mkdirp = require('mkdirp');
 var path = require('path');
 var fs = require('fs');
 
+const webpackconfig = { devtool: 'source-map' }
+
+gulp.task('default', ['clean', 'setup', 'build'], function () {
+});
+
 gulp.task('build', function () {
   return gulp.src('src/entry.js')
     .pipe(named())
-    .pipe(webpack())
+    .pipe(webpack(webpackconfig))
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('default', ['clean', 'setup', 'build'], function () {
+gulp.task('test', function (done) {
+  new Server({
+    //configFile: __dirname + '/karma.conf.js',
+    singleRun: true,
+    frameworks: ['jasmine'],
+    files: ['test/*_test.js', 'test/**/*_test.js'],
+    preprocessors: {
+            // add webpack as preprocessor
+            'test/*_test.js': ['webpack', 'sourcemap'],
+            'test/**/*_test.js': ['webpack', 'sourcemap']
+        },
+     webpack: webpackconfig,
+  }, done).start();
 });
 
 gulp.task('watch', function () {
