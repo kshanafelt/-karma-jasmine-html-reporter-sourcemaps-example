@@ -1,6 +1,6 @@
 {
   "name": "karma-jasmine-html-reporter-sourcemaps-example",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "An example project for karma-jasmine-html-reporter-sourcemaps, see https://github.com/kshanafelt/karma-jasmine-html-reporter-sourcemaps",
   "author": "Kyle Shanafelt <kyle.shanfelt@outlook.com>",
   "license": "MIT",
