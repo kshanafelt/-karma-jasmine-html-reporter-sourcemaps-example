@@ -4,7 +4,7 @@ describe("Hello world equals Hello world", function() {
     
   console.log(entry)
   it("says hello", function() {
-    expect(entry.helloWorld()).toEqual("Hello world!");
+    expect(entry.helloWorld()).toEqual("Hello world"); //needs !
   });
 });
 

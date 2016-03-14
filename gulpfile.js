@@ -8,7 +8,7 @@ var mkdirp = require('mkdirp');
 var path = require('path');
 var fs = require('fs');
 
-const webpackconfig = { devtool: 'source-map' }
+const webpackconfig = { devtool: 'inline-source-map' }
 
 gulp.task('default', ['clean', 'setup', 'build'], function () {
 });
@@ -23,7 +23,11 @@ gulp.task('build', function () {
 gulp.task('test', function (done) {
   new Server({
     //configFile: __dirname + '/karma.conf.js',
-    singleRun: true,
+    singleRun: false,
+    autoWatch: true,
+    reporters: ['karma-jasmine-html-sourcemaps'],
+    
+    browsers : ['Chrome'],// 'Firefox'],
     frameworks: ['jasmine'],
     files: ['test/*_test.js', 'test/**/*_test.js'],
     preprocessors: {
@@ -32,6 +36,15 @@ gulp.task('test', function (done) {
             'test/**/*_test.js': ['webpack', 'sourcemap']
         },
      webpack: webpackconfig,
+     plugins: [
+         'karma-jasmine',
+         'karma-webpack',
+         'karma-sourcemap-loader',
+         'karma-chrome-launcher',
+         
+         // todo: replace with npm name when it becomes an npm package
+         require('../karma-jasmine-html-reporter-sourcemaps/src/index.js')
+     ],
   }, done).start();
 });
 
