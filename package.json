@@ -1,13 +1,18 @@
 {
   "name": "karma-jasmine-html-reporter-sourcemaps-example",
   "version": "0.0.1",
-  "description": "A Karma plugin. Dynamically displays tests results at debug.html page with sourcemaps example",
+  "description": "An example project for karma-jasmine-html-reporter-sourcemaps, see https://github.com/kshanafelt/karma-jasmine-html-reporter-sourcemaps",
+  "author": "Kyle Shanafelt <kyle.shanfelt@outlook.com>",
+  "license": "MIT",
+  "readmeFilename": "README.md",
   "repository": {
+    "type": "git",
     "url": "https://github.com/kshanafelt/karma-jasmine-html-reporter-sourcemaps-example"
   },
-  "author": "Kyle Shanafelt",
+  "bugs": {
+      "url": "https://github.com/kshanafelt/karma-jasmine-html-reporter-sourcemaps-example/issues"
+  },
   "dependencies": {},
-  "license": "MIT",
   "devDependencies": {
     "del": "^2.2.0",
     "fs": "0.0.2",
@@ -25,6 +30,5 @@
     "vinyl-named": "^1.1.0",
     "webpack": "^1.12.14",
     "webpack-stream": "^3.1.0"
-  },
-  "readmeFilename": "README.md"
+  }
 }
